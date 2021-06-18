@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /root
+cd ~
 sudo apt-get update  
 sudo apt-get install openjdk-11-jdk -y
 sudo java -version
@@ -10,4 +10,4 @@ sudo apt-get update
 sudo apt-get install jenkins -y
 sudo apt-get install maven -y
 sudo systemctl status jenkins
-cd /var/lib/jenkins/secrets/
+cat /var/lib/jenkins/secrets/initialAdminPassword
