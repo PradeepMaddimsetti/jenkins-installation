@@ -1,0 +1,37 @@
+# ini based inventory
+182.14430.24
+192.144.0.0
+[webapp]
+182.14430.24
+22.66.55.44
+33.44.36.4
+
+
+# yaml format
+
+all:
+  hosts:
+    192.168.10.11:
+  children:
+    webserver:
+      hosts:
+        web1.qt.com:
+        web2.qt.com:
+    dbserver:
+      hosts:
+        db1.qt.com:
+        db2.qt.com:
+# adding group vars and host vars
+/directort/group_vars/<group server name for file>
+/directory/host_vars/<hsot ip name for file>
+# we have to define the variables with in the inventory
+
+182.14430.24
+192.144.0.0
+[webapp]
+182.14430.24
+22.66.55.44
+33.44.36.4
+[webapp:vars]
+key: value
+

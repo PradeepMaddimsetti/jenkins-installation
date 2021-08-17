@@ -1,0 +1,253 @@
+# kubernetes pod 
+---
+apiVersion: v1
+kind: pod
+metadata: 
+    name: pk-pod
+    labels:
+        app: pk-pod
+spec:
+    containers:
+    - name: web
+      image: apache2
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
+####################################
+# kubernetes objects are
+Pod
+Container
+Ephemeral Containers
+Replication Controllers
+Replica Sets
+Deployments
+StatefulSets
+DaemonSet
+Job
+CronJob
+HorizontalPodAutoScaler
+# listing the resources
+kubectl
+# viewing resources
+        kubectl api-resources
+kubectl has two ways to defined the objects
+imperative
+ through commands
+declarative
+ through yaml script
+ ####################################
+kubectl auto complete
+    source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+    echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
+##########################################
+# pod
+container encapsulated in Pod
+pod is the smallest object in kubernetes
+pods have 1 to 1 Replication
+pod have helper container
+# creating pod with yaml file
+apiVersion:
+kind:
+metadata:
+
+
+
+spec:
+#####################
+apiVersions
+    POD-v1
+    SERVICE-v1
+    REPLICASET-apps/v1
+    Deployment-apps/v1
+kind refers type of object
+metadata is the data about file
+# syntax
+metadata:
+  name:
+  labels: 
+    app:
+    type:
+#specification
+spec:
+  containers:
+  - name:
+    image:
+
+# create the pod by using this commends
+  kubectl create -f pod-definitation.yaml
+###################################################
+# example
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod 
+  labels: 
+    app: myapp
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+    - name: backend container
+      image: redis
+########################################################
+# replication controller
+rc-defination file
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: front-end 
+spec:
+  template:
+    metadata:
+      name: myapp-pod 
+      labelds:
+        app: myapp
+        type: front-end 
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 3
+##############################################################
+# REPLICASET
+
+apiVersion: apps/v1
+kind: ReplicaSet 
+metadata:
+  name: myapp-replicaset 
+  labels:
+    app: myapp
+    type: front-end 
+spec:
+  template:
+    metadata:
+      name: myapp-pod 
+      labels:
+        app: myapp
+        type: front-end 
+    spec:
+      containers:
+      - name: nginx-container 
+        image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end 
+##############################################################
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        tire: front-end 
+    spec:
+      containers:
+      - name: myapp
+        image: nginx
+  selector:
+    matchLabels:
+      tire: front-end 
+  replicas: 5
+######################################################################
+# namespace 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  namespace: dev
+  labels:
+    tire: front-end
+spec:
+  containers:
+  - name: my-nginx
+    image: nginx
+####################################################################
+we should apply resources limit to namespaces
+###########################################
+# resource quota
+# resources defination file 
+apiVersion: 
+kind: ResourceQuota
+metadata:
+    name: compute-quota 
+    namespaces: dev
+spec:
+    hard:
+        pods: "10"
+        requests.cpu: "4"
+        requests.memory: 5Gi
+        limits.cpu: "10"
+        limits.memory: 10Gi
+##############################################
+# services
+#service types
+nodepod
+clusterip
+loadbalacer
+# service
+# nodepod
+terms
+targetPort
+Port 
+NodePort- 300000-32767
+# NodePort-defination file
+apiVersion: v1 
+kind: Service
+metadata:
+    name: myapp-service
+spec:
+    type: NodePort
+    ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30009
+    selector:
+        app:    # getting labels from pod  
+        type:
+##################################################
+#clusterip
+clusterip-defination file
+apiVersion: v1
+kind: Service
+metadata:
+    name: back-end
+spec: 
+    type: ClusterIP 
+    ports:
+    - targetPort: 80
+      port: 80
+    selector:
+      app:
+      type:
+#################################################
+#loadbalacer defination file 
+apiVersion:
+kind:
+metadata:
+    name:
+spec:
+    type:
+    ports:
+    - targetPort:
+      port:
+      nodePort:
+
+######################################################
+
+
+
+
+
+
+

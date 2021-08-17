@@ -1,0 +1,35 @@
+# ansible module syntax`s 
+# apt module
+    apt:
+        name: name of the package
+        state: present/absent
+        update_cache: yes
+---------------------------------------------
+# file module
+    file:
+        path:
+        state: directory/present/absent
+---------------------------------------------
+# get url module
+    get_url:
+        url:
+        dest:
+        mode:
+---------------------------------------------
+when: ansible_facts[distribution] != "ubuntu"
+os_name
+________________________________________________
+______
+inventory parameters
+    22.33.44.0 ansible_hosts=localhost
+
+    debug:
+        msg:
+    fail:
+        msg:
+    when:
+-----------------------------------------------------
+notify
+    - 
+handlers:
+    

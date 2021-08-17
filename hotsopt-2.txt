@@ -1,0 +1,9 @@
+the possition of the different components on the microprocessor
+is varied 
+we have to examined and find the hot sports on the processor
+this are arised during the device operation
+
+the heat dissipation in the microprocessor is temporarlly 
+non uniform
+due to this it may cause high thermal gradeients and generates 
+thermal stresses

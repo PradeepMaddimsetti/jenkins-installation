@@ -1,0 +1,11 @@
+- name:
+  hosts:
+  become: yes
+  vars:
+    pack: openjdk-11-jdk
+  tasks:
+  - name: installing java 
+    apt:
+      name: "{{ pack }}"
+      state: present
+ 

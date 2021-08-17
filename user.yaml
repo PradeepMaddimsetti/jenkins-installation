@@ -1,0 +1,11 @@
+---
+- name: creating user
+  hosts: all
+  become: yes
+  tasks:
+  - name: creating 
+    user:
+      name: ansible
+      state: present
+      home: /home/ansible
+      password: pk07

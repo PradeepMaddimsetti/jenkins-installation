@@ -1,0 +1,93 @@
+# jenkis scripting
+# declarative pipeline script
+    pipeline {
+        /* insert Declarative Pipeline here */
+    }
+#########################################################
+# top level agent
+# operations done after entering to the agent
+# syntax
+
+    node("myAgent") {
+        timeout(unit: 'SECONDS', time: 5) {
+            stage("One"){
+                sleep 10
+                echo 'hello'
+            }
+        }
+    }
+##########################################################
+# stage level agent
+# few operations done befor entering to the agent
+# syntax
+    timeout(unit: 'SECONDS', time: 5) {
+        stage("One"){
+            node {
+                sleep 10
+                echo 'Hello'
+            }
+        }
+    }
+#############################################################
+# different parameters in agent
+# syntaxs
+    agent any 
+--------------------
+    agent none
+--------------------
+    agent { label 'name of the labile vm ' }
+--------------------
+# using logical operators
+    agent { label ' name of the label && name of the label 2'}
+    agent { label ' name of the label || name of the label 2'}
+--------------------------------------------------------------
+# node 
+    agent { node { label 'labelName' } }
+---------------------------------------------------------------
+#################################################################
+# docker
+    agent { docker 'maven:3.8.1-adoptopenjdk-11' } 
+------------------------------------------------------
+# or 
+    agent {
+        docker {
+            image 'maven:3.8.1-adoptopenjdk-11'
+            label 'my-defined-label'
+            args  '-v /tmp:/tmp'
+        }
+    }
+-------------------------------------------------------------
+# get from central repository
+    agent {
+        docker {
+            image 'myregistry.com/node'
+            label 'my-defined-label'
+            registryUrl 'https://myregistry.com/'
+            registryCredentialsId 'myPredefinedCredentialsInJenkins'
+        }
+    }
+-----------------------------------------------------------------------
+# docker file
+   agent {
+    // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
+        dockerfile {
+            filename 'Dockerfile.build'
+            dir 'build'
+            label 'my-defined-label'
+            additionalBuildArgs  '--build-arg version=1.0.2'
+            args '-v /tmp:/tmp'
+        }
+    }
+-------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

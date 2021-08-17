@@ -1,0 +1,140 @@
+# kubernetes learning
+######################
+# kubernetes installation 
+ it can be  available in to ways
+# developer environment
+it means the whole kubernetes cluster sets in single workermachine(single node) 
+by get this we install 
+     * minikube
+# For production environment 
+we have to setup multinode cluster
+by get this we have to install
+    * kubeadm
+#########################
+# minikube installation steps on linux
+# Binary downlode
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    sudo install minikube-linux-amd64 /usr/local/bin/minikube
+# starting  cluster 
+    minikube start
+########################
+
+# for windows installation by using chocolasty 
+    choco install minikube -y
+# starting minikube
+    minikube start
+#########################
+# for multinode kubernetes setup
+we are setup 3 node kubernetes cluster
+by reference this link
+    https://k21academy.com/docker-kubernetes/three-node-kubernetes-cluster/?utm_source=youtube&utm_medium=referral&utm_campaign=kubernetes30_march21_docker_kubernetes_with_k21academy
+# prerequisites
+    take 3 vms (1control node , 2 worker nodes)
+    vpn peering
+    set inbond for enabling poarts
+#  In control node
+
+we are installing
+kubeadm
+kubectl
+kubelet
+docker
+
+# workernodes
+kubelet
+docker
+kubectl
+# installing docker 
+    sudo su -
+    apt-get update && apt-get install-y docker.io
+    docker --version
+# installing kubernetes related  packages
+# gpg key to our apr-resources authentication
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
+# add package manager list for kubernetes
+    cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    deb https://apt.kubernetes.io/​ kubernetes-xenial main
+    EOF
+    deb https://apt.kubernetes.io/ kubernetes-xenial main
+    sudo apt-get update
+# installing kubelet kubectl kubeadm
+    apt-get install -y kubelet kubeadm kubectl
+# creating kubernetes cluster 
+    kubeadm init
+# setup the user configuration for conf
+
+    cp /etc/kubernetes/admin.conf $HOME/
+    chown  $(id -u) $HOME/admin.conf
+    export KUBECONFIG=$HOME/admin.conf
+
+# join kubernetes workernodes to the cluster
+login in to node
+     kubeadm join 10.0.0.4:6443 --token 9amey0.szuruforpi62u1j0 \ 
+     --discovery-token-ca-cert-hash sha256:bb3e85d5f582591aeb24321e1e58d82eaddbdd0e217ee8fc160ae5635501798
+
+# creating tocken
+    kubeadm token create --print-join-command
+
+# kubectl auto complete
+    source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+    echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
+######################################################################################################################################################
+two types of approuches in Cli 
+    imperative
+    declaretive
+# imperative
+ step by step instructions
+ we have to define what to do and how to do 
+# declarative
+ desired step
+ what to do 
+# imperative commends
+# CREATING objects
+    kubectl run --image <name of the image> <name of the pod>
+    kubectl create deployment --image <name of the image> <name of the deployment> 
+    kubectl expose deployment <name of the deployment> --port <port number>
+# UPDATING objects    
+    kubectl edit deployment <name of the deployment>
+    kubectl scale deployment <name of the deployment> --replicas <number of relicas>
+    kubectl set image deployment <name of the deployment> <previous image name>=<replacing image name>
+
+# DESCRIBING objects    
+    kubectl create -f <file name>
+    kubectl replace -f <filename>
+    kubectl delete -f <file name>
+# declarative
+kubectl apply -f <file name>
+# geting object files
+    kubecrl <commend > <options > --dry-run=client -o yaml > <saving file name>
+ 
+
+
+
+
+
+
+
+
+
+##############################################################################################################################
+
+# basic syntex for manifest or defination of kubernetes objects
+these can be written in yaml format
+---
+
+apiVersion:
+kind:
+metadata:
+spec:
+
+##############
+
+
+
+
+
+
+
+
+ 
+

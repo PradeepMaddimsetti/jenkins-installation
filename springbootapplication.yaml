@@ -1,0 +1,44 @@
+---
+- name: installing springboot application
+  hosts: all 
+  become: yes
+  tasks:
+    - name: installing java
+      apt:
+        name: openjdk-11-jdk
+        state: present
+        upadte_cache: yes
+    - name: create a directory
+      file:
+        path: /usr/share/springpetclinic
+        state: directory
+    - name: getting jar file 
+      get_url:
+        url: https://referenceapplicationskhaja.s3-us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
+        dest: /usr/share/springpetclinic/
+    - name: adding user
+      user:
+        name: springbootuser
+        password: pk07
+        create_home: /home/springbootuser
+        state: present
+    - name: chang ownership of the file
+      file:
+        path: /usr/share/springpetclinic/spring-petclinic-2.4.2.jar
+        owner: springbootuser 
+        group: springbootuser
+        mode: '500'
+    - name: copying file
+      copy:
+        src: /home/ubuntu/springpetclinic.service
+        dest: /etc/systemd/system/
+    - name: enabling service
+      systemd:
+        name: springpetclinic.service
+        enabled: yes
+        state: started
+    - name: satus of spring boot application
+      commend: service springpetclinic.service status
+      
+
+

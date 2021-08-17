@@ -1,0 +1,295 @@
+    minikube start
+    kubeadm init
+    kubeadm token create --print-join-command
+kubectl
+# viewing resources
+        kubectl api-resources 
+# kubectl authentication
+    source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+    echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
+# kubectl configuration
+    kubectl config view
+##############################################################################################################
+two types of approuches in Cli 
+    imperative
+    declaretive
+# imperative
+ step by step instructions
+ we have to define what to do and how to do 
+# declarative
+ desired step
+ what to do 
+# imperative commends
+# CREATING objects
+    kubectl run --image <name of the image> <name of the pod>
+    kubectl create deployment --image <name of the image> <name of the deployment> 
+    kubectl expose deployment <name of the deployment> --port <port number>
+# UPDATING objects    
+    kubectl edit deployment <name of the deployment>
+    kubectl scale deployment <name of the deployment> --replicas <number of relicas>
+    kubectl set image deployment <name of the deployment> <previous image name>=<replacing image name>
+
+# DESCRIBING objects    
+    kubectl create -f <file name>
+    kubectl replace -f <filename>
+    kubectl delete -f <file name>
+# declarative
+kubectl apply -f <file name>
+# geting object files
+    kubecrl <commend > <options > --dry-run=client -o yaml > <saving file name>
+#################################################################################################################### 
+# etcd installation
+    downlode the Binary
+    extract
+    run etcd service
+# start etcd
+    ./etcd
+ # etcd control client
+    ./etcdctl set key1 value1
+    ./etcdctl get key1
+ # getting commands9
+    ./etcdctl
+# etcdctl commands
+by default version is 2
+in version 2 commends
+    etcdctl backup
+    etcdctl cluster-health
+    etcdctl mk 
+    etcdctl mkdir
+    etcdctl set
+# for supporting v3
+we set the environmental variable
+    export ETCDCTL_API=3
+supporting commends in etcdctl are
+    etcdctl snapshot save
+    etcdctl endpoint health
+    etcdctl get
+    etcdctl put 
+# details of etcd Container
+    kubectl exec etcd-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl get / --prefix --keys-only --limit=10 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt  --key /etc/kubernetes/pki/etcd/server.key"
+        cat /etc/kubernetes/manifest/etcd/etcdctl.yaml            
+        cat /etc/systemed/system/etcdctl.service
+
+
+# kubeapi
+    kubectl get pods -n kube-system
+    cat /etc/kubernetes/manifest/kubeapi-server.yaml
+    cat /etc/systemed/system/kube-apiserver.service
+    ps -aux | grep kube-apiserver
+# kube controller-manager
+    kubectl get nodes
+    kubectl get pods -n kube-system
+    cat /etc/kubernetes/manifests/kube-controller-manager.yaml
+    cat /etc/systemd/system/kube-controller-manager.service
+    ps -aux | grep kube-controller-manager
+# kube-scheduler
+    cat /etc/kubernetes/manifest/kube-scheduler.yaml
+    ps -aux | grep kube-scheduler
+# kubelet
+    ps -aux | grep kubelet
+# kube-proxy
+    kubectl get pods -n kube-system
+    kubectl get daemonset -n kube-system
+# kubernetes pod
+creating a pod
+    kubectl run <name> --image <name of the image >
+ex kubectl run nginx --image nginx
+    kubectl get pods
+# creating the pod
+    kubectl create -f <nameof the file>
+#ex kubectl create -f pod-defination.yaml
+    kubectl get pods
+    kubectl describe pod <name of the pod>
+    kubectl get pods -o wide
+    kubectl delete pod <name of the pod>
+    kubectl edit pod <name of the pod>
+    kubectl run <name of the pod> --image <name of the image> --dry-run=client -o yaml> <generating file name>
+    kubectl apply -f <name of the file>
+# replication controller
+# creating replication controller
+    kubectl create -f <filename>
+#ex kubectl create -f rc-defination.yaml
+    kubectl get replicationcontroller
+    kubectl get pods
+# REPLICASET
+    kubectl create -f <file name>
+#ex kubectl create -f replicaset-definitation.yaml
+    kubectl get replicaset
+# scaling 
+    kubectl replica -f <name of the file>
+    kubectl scale --replicas=n -f <file name> 
+    kubectl scale --replicas=n replicaset <name of the replicaset>
+    kubectl  delete replicaset <name of the replicaset>
+# Deployment
+    kubectl create -f <name of the deployment>
+    kubectl get Deployments
+    kubectl get replicasets
+    kubectl get pods
+    kubectl get all 
+    kubectl create deployment --image nginx --dry-run=client -o yaml > <file name>
+# Name spaces
+    default
+    kube-system
+    kube-public
+servicename.namespace.service.domain
+#ex db-service.dev.svc.cluster.local
+    kubectl create --namespace=<name> -f <file name>
+    kubectl create namespace <name>
+    kubectl config set-context$(kubectl current-context) --namespace <name>
+    kubectl get pods --all-namespaces
+    kubectl config current-context
+# resource quota
+    kubectl create -f <file name>
+    kubectl get resourcequota 
+# services
+    kubectl get services
+    kubectl create -f <file name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+# linux commends
+# connecting to the server using ssh 
+# it is connected through port 22
+    ssh -i <pemfile> username@machinename or ip 
+# if the login is passwd based authantication
+    ssh username@ip or machinename
+#################################################
+# password less authantication
+# edit the file on /etc/ssh/sshd_config
+PasswordAuthantication no to yes
+and restart the sshd server
+    service sshd restart
+# share the public and private keys
+# generating key Pair 
+    ssh-keygen
+# this commend generates id_rsa amd id_rsa.public
+# share the public key to remote server which we whan to connected
+    ssh-copy-id username@ip ormachinename
+#######################################################
+# removing host key verfication
+    ssh -o StrictHostkeyChecking=no 
+# editing ssh config file
+# /etc/ssh/sshd_config OR ~/.ssh/config 
+    EOF
+     Host *
+            StrictHostkeyChecking no
+    EOF
+############################################################
+# fire wall set update
+# ufw firewall
+    ufw enable
+    ufw status
+    ufw disable
+
+    

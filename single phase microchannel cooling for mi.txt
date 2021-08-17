@@ -1,0 +1,38 @@
+single phase microchannel cooling for microprocessor
+19221D2104
+pradeep kumar maddimsetti
+ramakrishna sir
+
+Abstract
+* The placement and arrangement of the different components on a microprocessor chip is examinated to make less severe the hotspots 
+ that my arise on device during its operation
+
+* the power dissipation of the individual components on a microprocessor is non uniform due to this resulting in high  thermal gradient 
+and a consequences high thermal stresses
+
+* variations of power dissipation rises in the microprocessor develops large thermal gradient localized hotspots 
+ these hotspots can cause device failure and a loss in performance that results when the clock ferquency slows with voltage variations
+ this is due to inclusion of heat
+* to minimize the thermal gradient in the device by developing a new architechural design that redistributing some of the components in 
+the device
+in architechural poin of view few components are constained that cannot  be seperated due to performance decreases
+and few are allow rearranged
+
+* the repositionable components on the device changes the power dissipation which causes variation in thermal gradient
+* a computational model is developed to compare the heat dissipation on microprocessor by repositioning the compenent on the device
+to find out the best floor plan of the microprocessor
+
+# literature review
+the base paper 
+hotspot mitigation using single phase microchannel cooling for microprocessor
+ authors
+ anjali chauhan b. sammakia
+ k gosh
+ * analyzing fluid flow and heat transfer ina rectangular microchannel heat sink using water as a cooling fluid
+ in this develops a numerical code based on finite differential model using simple algorithm to solve the governing equations
+ auther
+ qu and mudawar
+ * 
+ 
+
+

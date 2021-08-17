@@ -1,0 +1,21 @@
+# networking in linux
+    ip address
+    or
+    ip address show
+# adding ip address
+    ip address add <ip> dev <enps>
+# deleating ip address
+    ip address del <ip> dev <enps>
+# enabling and disabling ip
+    ip link set eth0 up
+    ip link set eth0 down
+# mtu range
+    ip link set eth0 mtu 9000
+# promisc
+    ip link set eth0 promisc on
+# ip route 
+    ip route add default via <local gateway> dev eth0
+    ip route add <ip> via <local gateway>
+    ip route add <ip> dev eth0
+    ip route delete <ip> via <local gateway>
+    ip route get <ip>

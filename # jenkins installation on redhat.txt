@@ -1,0 +1,46 @@
+# jenkins installation on redhat
+# prerequisites
+    openjdk
+    sudo previlages
+# installations steps
+    sudo yum install java-11-openjdk -y
+# jenkins
+    sudo yum install wget -y
+    sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    sudo yum upgrade
+    sudo yum install jenkins java-11-openjdk-devel
+    sudo systemctl daemon-reload 
+    sudo systemctl start jenkins
+    sudo systemctl status jenkins
+# it enables in port 8080
+##################################################################################
+# to become root user 
+    sudo -i or sudo su -
+# sudo previlages
+    visudo 
+# or edite /etc/sudoers file
+add this on group
+jenkins ALL=(ALL)   NOPASSWD:ALL   # %wheel in redhat
+in ubuntu
+jenkins ALL=(ALL:ALL)   NOPASSWD:ALL # %sudo in ubuntu
+####################################################################################
+# adding node to the jenkins
+# prerequisites
+# enable password based authantication by editing /etc/ssh/sshd_config
+vi /etc/ssh/sshd_config
+PasswordAuthantication no --> PasswordAuthantication yes
+sed -i 's/PasswordAuthantication no/PasswordAuthantication yes/g' /etc/ssh/sshd_config
+# know restart sshd service
+sudo service sshd restart
+sudo service sshd status
+######################################################################################
+
+# manual installation
+# java 
+ sudo apt-get update 
+
+
+
+

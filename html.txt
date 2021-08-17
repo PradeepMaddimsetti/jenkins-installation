@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html></html>
+<title></title>
+<bodt></body> 
+<h1></h1> (h1-h6)
+<p></p>
+<br>
+<a href="URL"></a>
+<img src="URL" width="pixels" height="pixels" alt="alternate text">
+###################################################################################
+# attributes
+href-URL
+src-URL
+height-pixels
+width-pixels
+alt-alternate text
+style-fount,color,size,more 
+lang-language
+title-infornation about element
+#######################################
+# headings
+h1-h6
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h4></h4>
+<h5></h5>
+<h6></h6>
+
+<h1 style="font-size:70px;"></h1>
+#####################################
+# paragraphs
+<p></p>
+<hr>
+<br>
+<pre></pre>
+########################################
+# styles
+<tagname style="property:value;">
+# properties
+background-color
+color
+font-family
+font-size
+text-align
+# values
+background-color
+    powderblue
+    tomato
+color
+    red 
+    blue
+font-family
+    verdana
+    courier
+text-align
+    right
+    left
+    center
+# ex 
+<body style="background-color:powderblue;"></body>
+<h1 style="color:blue;"></h1>
+<h1 style="font-family:verdana;"></h1>
+<h1 style="font-size:300%;"></h1>
+<h1 style="text-align:center;"></h1>
+#################################################################
+# formating
+<b></b>
+<strong><strong>
+<i></i>
+<em></em>
+<small></small>
+<mark></mark>
+<del></del>
+<ins></ins>
+<sub></sub>
+<sup></sup>
+################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

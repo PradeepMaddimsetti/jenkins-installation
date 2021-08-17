@@ -1,0 +1,2 @@
+ansiple -i <inventory> <pettern> --list-hosts 
+ansible-playbook -i <inventory file> --private-key <pemfile> -u <user> <playbookfile>

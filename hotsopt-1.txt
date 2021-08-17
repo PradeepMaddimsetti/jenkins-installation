@@ -1,0 +1,18 @@
+the placement and arrangement of the different components on a 
+micro processor chip is examined to matigate the hotspots that
+may arisea on the device during its operation
+
+the power dissipation in the microprocessor is spatially and 
+temporarlly non uniform
+
+due to this possible resulting in high thermalgradeients and 
+a consequence hieh thermal stresses
+
+these hotspots arises because the powerdisscipated by some components
+accounting for a major fraction of the total power of the device
+
+the device then devlops large temperature gradeients
+and localized hot sports these hot spots can cause device failures
+and a loss in performance that results when clock frequence is 
+slow down with voltage is slicing 
+it also leads to low yield
